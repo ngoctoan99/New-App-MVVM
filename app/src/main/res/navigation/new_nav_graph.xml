@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/new_nav_graph"
+    app:startDestination="@id/breakingNewFragment">
+
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.sanghm2.newapp.screen.fragment.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article" >
+        <argument
+            android:name="article"
+            app:argType="com.sanghm2.newapp.model.Article" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedNewFragment"
+        android:name="com.sanghm2.newapp.screen.fragment.SavedNewFragment"
+        android:label="fragment_saved_new"
+        tools:layout="@layout/fragment_saved_new" >
+        <action
+            android:id="@+id/action_savedNewFragment_to_articleFragment"
+            app:destination="@id/articleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/breakingNewFragment"
+        android:name="com.sanghm2.newapp.screen.fragment.BreakingNewFragment"
+        android:label="fragment_breaking_new"
+        tools:layout="@layout/fragment_breaking_new" >
+        <action
+            android:id="@+id/action_breakingNewFragment_to_articleFragment"
+            app:destination="@id/articleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/searchNewFragment"
+        android:name="com.sanghm2.newapp.screen.fragment.SearchNewFragment"
+        android:label="fragment_search_new"
+        tools:layout="@layout/fragment_search_new" >
+        <action
+            android:id="@+id/action_searchNewFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+</navigation>

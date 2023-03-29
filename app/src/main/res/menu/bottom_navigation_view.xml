@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:id="@+id/breakingNewFragment"
+        android:title="Breaking New"
+        android:icon="@drawable/ic_baseline_newspaper_24"/>
+    <item android:id="@+id/savedNewFragment"
+        android:title="Saved New"
+        android:icon="@drawable/ic_baseline_save_alt_24"/>
+    <item android:id="@+id/searchNewFragment"
+        android:title="Search New"
+        android:icon="@drawable/ic_baseline_content_paste_search_24"/>
+</menu>
