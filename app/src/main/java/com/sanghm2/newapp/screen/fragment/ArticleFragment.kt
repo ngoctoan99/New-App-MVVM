@@ -2,13 +2,11 @@ package com.sanghm2.newapp.screen.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.webkit.WebViewClient
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
-import com.sanghm2.newapp.NewViewModel
+import com.sanghm2.newapp.viewmodel.NewViewModel
 import com.sanghm2.newapp.R
 import com.sanghm2.newapp.screen.MainActivity
 import kotlinx.android.synthetic.main.fragment_article.*

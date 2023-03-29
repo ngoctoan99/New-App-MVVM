@@ -1,4 +1,4 @@
-package com.sanghm2.newapp
+package com.sanghm2.newapp.repository
 
 import com.sanghm2.newapp.api.RetrofitConfig
 import com.sanghm2.newapp.database.ArticleDatabase

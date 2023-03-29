@@ -1,8 +1,9 @@
-package com.sanghm2.newapp
+package com.sanghm2.newapp.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.sanghm2.newapp.repository.NewRepository
 
 
 class NewViewModelProviderFactory(val app : Application,val newRepository: NewRepository): ViewModelProvider.Factory{

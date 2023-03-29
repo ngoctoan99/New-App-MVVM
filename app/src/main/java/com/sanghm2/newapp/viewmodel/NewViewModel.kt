@@ -1,4 +1,4 @@
-package com.sanghm2.newapp
+package com.sanghm2.newapp.viewmodel
 
 import android.app.Application
 import android.content.Context
@@ -10,9 +10,9 @@ import android.os.Build
 import android.provider.ContactsContract.CommonDataKinds.Email.TYPE_MOBILE
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sanghm2.newapp.api.RetrofitConfig
+import com.sanghm2.newapp.NewApplication
+import com.sanghm2.newapp.repository.NewRepository
 import com.sanghm2.newapp.model.Article
 import com.sanghm2.newapp.model.NewResponse
 import com.sanghm2.newapp.util.Resource
@@ -22,7 +22,8 @@ import java.io.IOException
 
 class NewViewModel (
     app: Application,
-    val newRepository: NewRepository): AndroidViewModel(app){
+    val newRepository: NewRepository
+): AndroidViewModel(app){
 
     val breakingNew : MutableLiveData<Resource<NewResponse>> = MutableLiveData()
     var breakingNewPage = 1
