@@ -8,6 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.sanghm2.newapp.viewmodel.NewViewModel
 import com.sanghm2.newapp.R
 import com.sanghm2.newapp.adapter.NewAdapter
@@ -62,6 +63,7 @@ class SearchNewFragment : Fragment(R.layout.fragment_search_new) {
                     hideProgressBar()
                     response.message?.let {
                         Log.e(TAG ,"An error occured $it")
+                        Snackbar.make(view, it, Snackbar.LENGTH_SHORT).show()
                     }
                 }
                 is Resource.Loading->{

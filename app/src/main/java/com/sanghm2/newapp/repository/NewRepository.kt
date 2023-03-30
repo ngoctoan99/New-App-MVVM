@@ -10,6 +10,8 @@ class NewRepository (
         RetrofitConfig.api.getBreakingNews(countryCode,pageNumber)
     suspend fun searchNews(searchQuery : String, pageNumber: Int) =
         RetrofitConfig.api.searchForNews(searchQuery,pageNumber)
+    suspend fun getVnNew(domainString: String ,pageNumber: Int) =
+        RetrofitConfig.api.getVnNew(domainString,pageNumber)
 
     suspend fun upsert(article: Article) = db.getArticle().upsert(article)
 

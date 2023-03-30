@@ -34,8 +34,13 @@ class NewViewModel (
     var searchNewPage = 1
     var searchNewResponse : NewResponse ? = null
 
+
+    val VNNew : MutableLiveData<Resource<NewResponse>> = MutableLiveData()
+    var vnNewPage = 1
+
     init{
         getBreakingNews("us")
+        getVNNew("vnexpress.net")
     }
 
     fun getBreakingNews(countryCode: String) = viewModelScope.launch {
@@ -46,9 +51,14 @@ class NewViewModel (
     }
 
     fun searchNew(searchQuery: String) = viewModelScope.launch {
-        searchNew.postValue(Resource.Loading())
-        val response = newRepository.searchNews(searchQuery,searchNewPage)
-        searchNew.postValue(handleSearchNewsResponse(response))
+//        searchNew.postValue(Resource.Loading())
+//        val response = newRepository.searchNews(searchQuery,searchNewPage)
+//        searchNew.postValue(handleSearchNewsResponse(response))
+        safeSearchNewCall(searchQuery)
+    }
+
+    fun getVNNew(domainsString: String) = viewModelScope.launch {
+        safeVNNewCall(domainsString)
     }
 
     private  fun handleBreakingNewsResponse(response: Response<NewResponse>): Resource<NewResponse>{
@@ -90,6 +100,41 @@ class NewViewModel (
             when(t){
                 is IOException -> breakingNew.postValue(Resource.Error("Network Failure"))
                 else -> breakingNew.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+    }
+
+    private suspend fun safeSearchNewCall(searchQuery: String){
+        searchNew.postValue(Resource.Loading())
+        try{
+            if(hasInternetConnection()){
+                val response = newRepository.searchNews(searchQuery,searchNewPage)
+                searchNew.postValue(handleSearchNewsResponse(response))
+            }else {
+                searchNew.postValue(Resource.Error("No internet connection"))
+            }
+        }catch (t : Throwable){
+            when(t){
+                is IOException -> searchNew.postValue(Resource.Error("Network Failure"))
+                else -> searchNew.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+    }
+
+
+    private suspend fun safeVNNewCall(domainString: String){
+        VNNew.postValue(Resource.Loading())
+        try{
+            if(hasInternetConnection()){
+                val response = newRepository.getVnNew(domainString,vnNewPage)
+                VNNew.postValue(handleSearchNewsResponse(response))
+            }else {
+                VNNew.postValue(Resource.Error("No internet connection"))
+            }
+        }catch (t : Throwable){
+            when(t){
+                is IOException -> VNNew.postValue(Resource.Error("Network Failure"))
+                else -> VNNew.postValue(Resource.Error("Conversion Error"))
             }
         }
     }

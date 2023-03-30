@@ -3,7 +3,7 @@
 
 
     <item android:id="@+id/breakingNewFragment"
-        android:title="Breaking New"
+        android:title="US New"
         android:icon="@drawable/ic_baseline_newspaper_24"/>
     <item android:id="@+id/savedNewFragment"
         android:title="Saved New"
@@ -11,4 +11,7 @@
     <item android:id="@+id/searchNewFragment"
         android:title="Search New"
         android:icon="@drawable/ic_baseline_content_paste_search_24"/>
+    <item android:id="@+id/VNNewFragment"
+        android:title="VN New"
+        android:icon="@drawable/ic_baseline_newspaper_24"/>
 </menu>

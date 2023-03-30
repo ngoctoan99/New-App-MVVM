@@ -27,4 +27,16 @@ interface NewsAPI {
         @Query("apiKey")
         apiKey: String = API_KEY
     ): Response<NewResponse>
+
+
+    @GET("v2/everything")
+    suspend fun getVnNew(
+        @Query("domains")
+        domainString: String,
+        @Query("page")
+        pageNumber: Int = 1,
+        @Query("apiKey")
+        apiKey: String = API_KEY
+    ): Response<NewResponse>
+
 }
